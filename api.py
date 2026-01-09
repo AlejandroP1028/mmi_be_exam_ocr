@@ -4,14 +4,17 @@ from pymongo import MongoClient
 from bson import ObjectId
 import os
 import shutil
+from dotenv import load_dotenv
 
 # --------------------
 # Configuration
 # --------------------
-UPLOAD_DIR = "uploaded_images"
-MONGO_URI = "mongodb://localhost:27017"
-DB_NAME = "pokemon_db"
-COLLECTION_NAME = "images"
+load_dotenv()
+
+UPLOAD_DIR = os.getenv("UPLOAD_DIR", "uploaded_images") 
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
+DB_NAME = os.getenv("DB_NAME", "pokemon_db")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "images")
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
